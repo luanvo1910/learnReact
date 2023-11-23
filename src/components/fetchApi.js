@@ -5,6 +5,8 @@ import {AmiiboContext} from '../context/amiiboContext'
 import { Col, Row, Spin  } from 'antd';
 // import components card 
 import AmiiboCart from './card';
+// import components modal
+import AmiiboModal from './amiiboModal' 
 
 const FetchApi = () => {
   const {
@@ -45,6 +47,7 @@ const FetchApi = () => {
   return (
     <>
     {body}
+    {amiibo !== null && <AmiiboModal/>}
     </>
   )
 }

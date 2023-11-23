@@ -13,6 +13,8 @@ export const amiiboReducer = (state, action) => {
                 payload: [],
                 isLoading: false
             }
+        case 'FIND_AMIIBO':
+            return { ...state, amiibo: payload }
         default:
             return state
     }

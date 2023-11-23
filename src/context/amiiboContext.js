@@ -25,10 +25,16 @@ const AmiiboContextProvider = ({children}) => {
             dispatch({type: 'AMIIBOS_LOADED_FAIL'});
         }
     }
+
+    const findAmiibo = amiiboId => {
+		const amiibo = amiiboState.amiibos.find(amiibo => amiibo.head + amiibo.tail === amiiboId)
+		dispatch({ type: 'FIND_AMIIBO', payload: amiibo })
+	}
     
     const amiiboContextData = {
         amiiboState,
         getAmiibo,
+        findAmiibo,
         showModal,
         setShowModal
     }
