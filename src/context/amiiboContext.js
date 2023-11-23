@@ -11,7 +11,8 @@ const AmiiboContextProvider = ({children}) => {
         isLoading: true
     })
 
-    const [showModal, setShowModal] = useState(false)
+    const [showModal, setShowModal] = useState(false);
+    const [searchString, setSearchString] = useState("");
 
     // fetch API = axios và set giá trị trả về vào fetchdata
     const getAmiibo = async () => {
@@ -26,6 +27,17 @@ const AmiiboContextProvider = ({children}) => {
         }
     }
 
+    const searchAmiibos = async query => {
+        try {
+            const response = await axios.get(`https://www.amiiboapi.com/api/amiibo/?name=${query}`)
+            if (response.status === 200) {
+                dispatch({type: 'AMIIBOS_LOADED_SUCCESS', payload: response.data.amiibo});
+            }
+        } catch (error) {
+            dispatch({type: 'AMIIBOS_LOADED_FAIL'})
+        }
+    }
+
     const findAmiibo = amiiboId => {
 		const amiibo = amiiboState.amiibos.find(amiibo => amiibo.head + amiibo.tail === amiiboId)
 		dispatch({ type: 'FIND_AMIIBO', payload: amiibo })
@@ -36,7 +48,10 @@ const AmiiboContextProvider = ({children}) => {
         getAmiibo,
         findAmiibo,
         showModal,
-        setShowModal
+        setShowModal,
+        searchAmiibos,
+        searchString,
+        setSearchString
     }
 
     return (

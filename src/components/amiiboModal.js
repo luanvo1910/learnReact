@@ -12,7 +12,7 @@ const AmiiboModal = () => {
     const [showAmiibo, setShowAmiibo] = useState(amiibo)
     useEffect(() => setShowAmiibo(amiibo), [amiibo])
 
-    const { character, gameSeries, image, amiiboSeries } = showAmiibo
+    const { name, character, gameSeries, image, amiiboSeries } = showAmiibo
 
     const handleOk = () => {
         setShowModal(false);
@@ -23,11 +23,11 @@ const AmiiboModal = () => {
     };
 
   return (
-    <Modal title="Basic Modal" open={showModal} onOk={handleOk} onCancel={handleCancel}>
+    <Modal title={name} open={showModal} onOk={handleOk} onCancel={handleCancel}>
         <img alt="amiiboImg" src={image} />
-        <p>Character: {character}</p>
-        <p>Game: {gameSeries}</p>
-        <p>Amiibo series: {amiiboSeries}</p>
+        <h1>Character: {character}</h1>
+        <h3>Game: {gameSeries}</h3>
+        <h3>Amiibo series: {amiiboSeries}</h3>
     </Modal>
   )
 }

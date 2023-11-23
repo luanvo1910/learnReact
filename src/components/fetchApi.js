@@ -7,17 +7,25 @@ import { Col, Row, Spin  } from 'antd';
 import AmiiboCart from './card';
 // import components modal
 import AmiiboModal from './amiiboModal' 
+// import search box
+import Searchbox from './SearchBox'
 
 const FetchApi = () => {
   const {
     amiiboState: {amiibo, amiibos, isLoading},
-    getAmiibo
+    getAmiibo,
+    searchString,
+    searchAmiibos
   } = useContext(AmiiboContext);
 
   // chạy useEffect để load state, [] là phần điều kiện để useEffect chạy lại 
+  //-> nếu searchString thay đổi, nó sẽ chạy function search và load lại trang
   useEffect(() => {
-    getAmiibo();
-  }, []);
+    if (searchString != null) {
+      searchAmiibos(searchString)
+  } else {
+    getAmiibo()
+  }}, [searchString])
 
   let body = null
 
@@ -46,6 +54,7 @@ const FetchApi = () => {
 
   return (
     <>
+    <Searchbox/>
     {body}
     {amiibo !== null && <AmiiboModal/>}
     </>
