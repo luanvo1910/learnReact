@@ -29,6 +29,7 @@ const FetchApi = () => {
 
   let body = null
 
+  // nếu chưa load xong nó sẽ hiện spinner
   if (isLoading) {
     body = (
       <>

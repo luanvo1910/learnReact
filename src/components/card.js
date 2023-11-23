@@ -16,7 +16,6 @@ const AmiiboCard = ({amiibo: {character, gameSeries, image, head, tail}}) => {
   }
 
   const amiiboId = head + tail;
-  // console.log(amiiboId)
 
   return (
     <>
@@ -28,6 +27,7 @@ const AmiiboCard = ({amiibo: {character, gameSeries, image, head, tail}}) => {
       cover={<img alt="amiiboImg" src={image} />}
     >
       <Meta title={character} description={gameSeries} />
+      {/* truyền id của amiibo = head + tail vào function để lấy thông tin */}
       <Button type="primary" onClick={() => chooseAmiibo(amiiboId)}>
         Details
       </Button>

@@ -1,9 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import {AmiiboContext} from '../context/amiiboContext'
 
 const SearchBox = () => {
-    const [search, setSearch] = useState("");
-    const { searchAmiibos, setSearchString } = useContext(AmiiboContext)
+    const { setSearchString } = useContext(AmiiboContext)
   return (
     <div>
         <form className="d-flex" role="search">

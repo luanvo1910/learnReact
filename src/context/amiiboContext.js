@@ -27,6 +27,7 @@ const AmiiboContextProvider = ({children}) => {
         }
     }
 
+    // lấy giá trị được truyền vào để search sản phẩm 
     const searchAmiibos = async query => {
         try {
             const response = await axios.get(`https://www.amiiboapi.com/api/amiibo/?name=${query}`)
@@ -38,6 +39,7 @@ const AmiiboContextProvider = ({children}) => {
         }
     }
 
+    // lấy thông tin của 1 Amiibo và truyền vào amiibo
     const findAmiibo = amiiboId => {
 		const amiibo = amiiboState.amiibos.find(amiibo => amiibo.head + amiibo.tail === amiiboId)
 		dispatch({ type: 'FIND_AMIIBO', payload: amiibo })
