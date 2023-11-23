@@ -2,6 +2,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import React from 'react';
 
+//import components vào trang
 import Navbar from './components/navbar';
 import Hook from './components/hook';
 import DateAntd from './components/antDesign';
@@ -16,6 +17,7 @@ export default function App() {
           <Navbar />
         </div>
         <main className="col-10">
+          {/* sử dụng router để chuyển hướng components */}
           <Routes>
             <Route path="/" element={<Hook />} />
             <Route path="/page2" element={<DateAntd />} />

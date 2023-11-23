@@ -1,9 +1,11 @@
 import React from 'react';
 import products from '../jsonData/product.json'
 
+// sử dụng Table trong UI library antd
 import { Table } from 'antd';
 
 function importJson() {
+  // tạo cột trong bảng 
     const columns = [
         {
           title: 'Name',
