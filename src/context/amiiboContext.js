@@ -15,9 +15,9 @@ const AmiiboContextProvider = ({children}) => {
     const [searchString, setSearchString] = useState("");
 
     // fetch API = axios và set giá trị trả về vào fetchdata
-    const getAmiibo = async () => {
+    const getAmiibo = async (offset, limit) => {
         try {
-        const response = await axios.get('https://amiiboapi.com/api/amiibo/')
+        const response = await axios.get(`https://amiiboapi.com/api/amiibo?_start=${offset}&_limit=${limit}`)
         if (response.status === 200) {
             dispatch({type: 'AMIIBOS_LOADED_SUCCESS', payload: response.data.amiibo});
         }
